@@ -24,7 +24,11 @@ export class ChatGateway {
   }
   @SubscribeMessage('sendMessage')
   async handleSendMessage(client: Socket, payload: Chat): Promise<void> {
-    this.server.emit('recMessage', payload);
+    this.server.emit('recMessege', payload);
+  }
+  @SubscribeMessage('isTyping')
+  async handleSendIsTyping(client: Socket, payload: string): Promise<void> {
+    this.server.emit('recIsTyping', payload);
   }
 
   afterInit(server: Server) {
