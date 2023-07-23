@@ -19,6 +19,7 @@ interface Chat {
     methods: ['GET', 'POST'],
   },
 })
+//
 export class ChatGateway {
   @WebSocketServer()
   server: Server;
