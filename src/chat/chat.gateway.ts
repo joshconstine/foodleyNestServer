@@ -13,7 +13,12 @@ interface Chat {
   createdAt: Date;
 }
 
-@WebSocketGateway()
+@WebSocketGateway({
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+  },
+})
 export class ChatGateway {
   @WebSocketServer()
   server: Server;
