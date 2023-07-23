@@ -1,10 +1,11 @@
 import {
+  ConnectedSocket,
   MessageBody,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
-import { Server } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway()
 export class ChatGateway {
@@ -15,12 +16,9 @@ export class ChatGateway {
     this.server.on('connection', (socket) => {
       console.log(`Client connected: ${socket.id}`);
     });
-    // this.server.on('receive_message', (data) => {
-    //   console.log(data + 'in server');
-    // });
   }
 
-  @SubscribeMessage('send_message')
+  @SubscribeMessage('send_messege')
   onNewMessage(@MessageBody() data: string) {
     console.log(data);
     this.server.emit('onMessege', {
