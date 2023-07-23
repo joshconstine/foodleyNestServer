@@ -22,7 +22,7 @@ export class ChatGateway {
       console.log(`Client connected: ${socket.id}`);
     });
   }
-  @SubscribeMessage('sendMessage')
+  @SubscribeMessage('sendMessege')
   async handleSendMessage(client: Socket, payload: Chat): Promise<void> {
     this.server.emit('recMessege', payload);
   }
